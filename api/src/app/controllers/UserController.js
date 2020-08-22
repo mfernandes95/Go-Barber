@@ -48,7 +48,6 @@ class UserController {
           password ? field.required().oneOf([Yup.ref('password')]) : field
         ),
       });
-      console.log('SCHEMAA', await schema.isValid(req.body));
       if (!(await schema.isValid(req.body)))
         res.status(400).json({ error: 'Validation fails.' });
 
