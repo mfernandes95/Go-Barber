@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs';
 
 class User extends Model {
   static init(sequelize) {
-    console.log('CHURROS');
     super.init(
       {
         name: Sequelize.STRING,

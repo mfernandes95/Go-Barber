@@ -6,7 +6,6 @@ const models = [User];
 
 class Database {
   constructor() {
-    console.log('BATATA');
     this.init();
   }
 
@@ -16,4 +15,4 @@ class Database {
   }
 }
 
-export default Database;
+export default new Database();
