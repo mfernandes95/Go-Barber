@@ -28,9 +28,9 @@ services:
     volumes:
       - .:/usr/app
     ports:
-      - 3000:3000
+      - 3333:3333
     command: 'sh /usr/app/start.sh'
-    # env_file: .dockerenv
+  # env_file: .dockerenv
 
 networks:
   gobarber:
