@@ -12,7 +12,7 @@ class UserController {
       });
 
       if (!(await schema.isValid(req.body)))
-        res.status(400).json({ error: 'Validation fails.' });
+        return res.status(400).json({ error: 'Validation fails.' });
 
       const userExists = await User.findOne({
         where: { email: req.body.email },
@@ -49,7 +49,7 @@ class UserController {
         ),
       });
       if (!(await schema.isValid(req.body)))
-        res.status(400).json({ error: 'Validation fails.' });
+        return res.status(400).json({ error: 'Validation fails.' });
 
       const { email, oldPassword } = req.body;
 
@@ -58,11 +58,12 @@ class UserController {
       if (email && email !== user.email) {
         const userExists = await User.findOne({ where: { email } });
 
-        if (userExists) res.status(400).json({ error: 'User already exists.' });
+        if (userExists)
+          return res.status(400).json({ error: 'User already exists.' });
       }
 
       if (oldPassword && !(await user.checkPassword(oldPassword)))
-        res.status(401).json({ error: 'Password does not match.' });
+        return res.status(401).json({ error: 'Password does not match.' });
 
       const { id, name, provider } = await user.update(req.body);
 

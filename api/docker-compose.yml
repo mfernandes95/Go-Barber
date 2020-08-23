@@ -16,14 +16,27 @@ services:
     ports:
       - 5432:5432
 
+  db_mongo:
+    container_name: mongo_gobarber
+    image: mongo:3.4.21-xenial
+    ports:
+      - 27017:27017
+    networks:
+      - gobarber
+    restart: on-failure
+    volumes:
+      - './src/database/postgres:/var/lib/mongodb/data'
+
   api_node:
     build: .
     networks:
       - gobarber
     links:
       - db_postgres
+      - db_mongo
     depends_on:
       - db_postgres
+      - db_mongo
     container_name: 'node_gobarber'
     volumes:
       - .:/usr/app
