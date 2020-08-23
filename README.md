@@ -6,7 +6,7 @@
 yarn
 ```
 
-## Rodar projeto
+## Run
 
 ```bash
 docker-compose up
