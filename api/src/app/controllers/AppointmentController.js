@@ -154,13 +154,9 @@ class AppointmentController {
       appointment.canceled_at = new Date();
       await appointment.save();
 
-      console.log('hereeeee=======');
-
-      await Queue.add(CancellationMail.Key, {
+      await Queue.add(CancellationMail.key, {
         appointment,
       });
-
-      console.log('laaaaaaaaaaaaaaaaee=======');
 
       return res.status(201).json(appointment);
     } catch (error) {
