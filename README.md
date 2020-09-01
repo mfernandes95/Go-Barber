@@ -1,13 +1,7 @@
 # go-barber
 
-# Install dependencies.
-
-```bash
-yarn
-```
-
 ## Run
 
 ```bash
-docker-compose up
+sudo docker-compose up --build
 ```
