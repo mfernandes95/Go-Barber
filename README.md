@@ -1,4 +1,4 @@
-# go-barber
+# Go-barber
 
 ## Run
 
